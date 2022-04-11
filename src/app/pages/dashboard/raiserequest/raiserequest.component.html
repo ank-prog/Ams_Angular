@@ -1,0 +1,148 @@
+<div class="container-fluid mt-1">
+    <p style="color: rgb(21, 27, 84);"><b>Raise Request</b></p>
+</div>
+<div class="container" style="height:30px;">
+
+    <mat-slide-toggle class="mat-slide-toggle mt-0" color="primary" (change)="onChange($event)" style="float: right;">
+        Admin
+    </mat-slide-toggle>
+
+</div>
+
+<!--form starts here-->
+<div class="container mt-5">
+    <form [formGroup]="requestForm" (ngSubmit)="raiseRequest(requestForm)">
+        <div class="row">
+            <div class="col-7">
+                <div class="form-group row mb-2">
+                    <label for="inputEmail3" class="col-sm-4  col-form-label">Asset Category*</label>
+                    <div class="col-lg-8">
+                        <select formControlName="assetCategory" (change)="selectChangeHandler($event)"
+                            class="form-select col-lg-10 slhight form-select-sm px-n5"
+                            aria-label=".form-select-sm example">
+                            <option value="none" selected disabled hidden>Select Asset</option>
+                            <option *ngFor="let category of allAssetCategories" value="{{category.assetCategoryId}}">
+                                {{category.assetCategoryName}} </option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-5">
+                <div class="form-group row mb-2">
+                    <label class="col-sm-4 col-form-label">Expected Date*</label>
+                    <div class="col-lg-8">
+                        <input type="date" formControlName="requestDate" class="col-lg-12 slhight" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-7">
+                <div class="form-group row mb-2">
+                    <label for="inputEmail3" class="col-sm-4 col-form-label">Asset</label>
+                    <div class="col-lg-8">
+                        <select formControlName="asset" class="form-select col-lg-10 slhight form-select-sm"
+                            aria-label=".form-select-sm example">
+                            <option value="none" selected disabled hidden>Select Asset</option>
+                            <option *ngFor="let asset of allAssets" value="{{asset.assetTypeName}}">
+                                {{asset.assetTypeName}}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-5">
+                <div class="form-group row mb-2">
+                    <label for="inputEmail3" class="col-sm-4 col-form-label">Reason</label>
+                    <div class="col-lg-8">
+                        <input type="text" formControlName="reason" class="col-lg-10 slhight" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" [hidden]="isDisabled?true:false">
+            <div class="col-7">
+                <div class="form-group row mb-2">
+                    <label for="inputEmail3" class="col-sm-4 col-form-label">Employee Id</label>
+                    <div class="col-lg-8">
+                        <input type="text" formControlName="employeeId" class="col-lg-10 slhight" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-5">
+                <div class="form-group row mb-2">
+                    <label for="inputEmail3" class="col-sm-4 col-form-label">Employee Department</label>
+                    <div class="col-lg-8">
+                        <input type="text" formControlName="employeeDepartment" class="col-lg-10 slhight" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-7" [hidden]="isDisabled?true:false">
+                <div class="form-group row mb-2">
+                    <label for="inputEmail3" class="col-sm-4 col-form-label">Employee Name</label>
+                    <div class="col-lg-8">
+                        <input type="text" formControlName="employeeName" class="col-lg-10 slhight" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary" >Raise Request</button>
+        </div>
+    </form>
+</div>
+<!--form ends here-->
+<!--table starts here-->
+<div class="container  mt-3 pt-0 pb-3 pr-2 pl-2 rounded" style="background-color:rgb(21,27,84);">
+    <p class="pt-2 pb-0" style="color: white; text-align: center;"><i>My Requests</i></p>
+    <div class="table-responsive">
+        <table>
+            <thead>
+                <tr>
+                    <th scope="col">Request Id</th>
+                    <th scope="col">Asset Id</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Status</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let request of allRequests" [hidden]="request.requestedBy.role.roleId===4?true:false">
+                    <td>{{request.requestId}}</td>
+                    <td>{{request.asset.assetId }}</td>
+                    <td>{{request.requestedOn | date:'dd/mm/yyyy'}}</td>
+                    <td>{{request.status?'Received':'In Progress'}}</td>
+                    <td>
+                        <a class="add" title="" data-toggle="tooltip" data-original-title="Add"
+                            style="padding: 0 1rem"><i class="bi bi-pencil-square"></i></a>
+                        <a class="add" title="" data-toggle="modal" data-target="#deleteModal"><i
+                                class="bi bi-trash3"></i></a>
+                        <!--Delete Modal-->
+                        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog"
+                            aria-labelledby="deleteModal" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Do you want to delete request :
+                                            {{request.requestId}} ?</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-dismiss="modal">Cancel</button>
+                                        <button type="button" class="btn btn-primary"
+                                            data-dismiss="modal">Delete</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<!--table ends here-->

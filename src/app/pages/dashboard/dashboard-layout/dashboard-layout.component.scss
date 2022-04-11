@@ -1,0 +1,57 @@
+@media (min-width: 768px)
+{
+  .collapse:not(.show) 
+  {
+    display: none;
+  }
+}
+
+@media (min-width: 992px)
+{
+  .collapse:not(.show) 
+  {
+    display: block;
+  }
+}
+
+@media (min-width: 1200px)
+{
+  .collapse:not(.show) 
+  {
+    display: block;
+  }
+}
+.navbar-toggler
+{
+  float: right;
+}
+.list-group
+{
+  border-radius: 0;
+}
+.list-group-item
+{
+  background-color: transparent;  
+  font-weight: 450;
+}
+.list-group-item a
+{
+  color: #ffffff;
+}
+.dropdown-toggle::after
+{ 
+  display: none;
+}
+.dropdown .btn
+{
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
+  background: transparent;
+  border: 0;
+}
+
+.dropdown .btn i
+{
+  font-size: 2.5rem;
+}

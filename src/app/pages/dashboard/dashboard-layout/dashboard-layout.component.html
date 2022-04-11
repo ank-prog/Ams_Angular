@@ -1,0 +1,40 @@
+<div class="container" style="max-width: -webkit-fill-available;">
+  <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-cozentus">
+    <div class="container">
+        <div class="row" style="width: -webkit-fill-available">
+            <div class="col-xxl-1 col-xl-2 col-lg-3 col-md-4 col-sm-4" style="background-color: #ffffff">
+                <a class="navbar-brand" href="#">
+                    <img src="../../../assets/images/cozentus_logo.png">
+                </a>                
+            </div>
+            <div class="col-xxl-11 col-xl-10 col-lg-9 col-md-8 col-sm-8">
+              <div class="dropdown float-right ">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="bi bi-person-circle"></i>
+                </button>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                  <a *ngFor=""class="dropdown-item" href="#">Employee ID - CZ000012</a>
+                </div>
+              </div>
+              <button class="navbar-toggler float-left" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+              </button>
+            </div>
+        </div>
+    </div>
+  </nav>
+    <div class="row">
+        <div class="col-xxl-2 col-xl-2 col-lg-3 col-md-4">
+            <div class="collapse navbar-collapse bg-cozentus" id="navbarSupportedContent" style="height: 93.4vh;">
+              <ul class="list-group">
+                <div *ngFor="let menu of menus">
+                  <li *ngIf="1==1" class="list-group-item"><a class="nav-link" href="{{menu.link}}">{{menu.menu}}</a></li>
+                </div>
+              </ul>
+            </div>
+        </div>
+        <div class="col-xxl-10 col-xl-10 col-lg-9 col-md-8">
+          <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

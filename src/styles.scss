@@ -1,0 +1,78 @@
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+.container, .row, .col-xxl-7, .col-xl-7, .col-lg-7, .col-md-7, .col-xxl-5, .col-xl-5, .col-lg-5, .col-md-5,
+.col-xxl-4, .col-xl-4, .col-lg-4, .col-md-4, .col-xxl-6, .col-xl-6, .col-lg-6, .col-md-6,.navbar
+{
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: -webkit-fill-available;
+}
+
+.centerAlign
+{
+    margin: auto;
+}
+input.form-control
+{
+    border-radius: 0;
+}
+.error
+{
+    color: red;
+    font-size: 12px;
+    font-weight: bold;
+}
+.form-check-label
+{
+    color: white;
+    position: absolute !important;
+    margin-left: 1rem !important;
+}
+.form-check-input {
+    position: absolute !important;
+    margin-top: 0.4rem !important;
+    margin-left: 0rem !important;
+}
+form
+{
+    margin: auto;
+    width: 85%;
+}
+
+.btnLogin
+{
+    margin: auto;
+    border-radius: 0;
+    width: 50%;
+}
+.logInBackground
+{
+    background-image: url(../src/assets/images/Image.png);
+    background-position: center center;
+    background-size: 70%;
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+
+.bg-cozentus
+{
+    background-color: #23466e!important;
+}
+.navbar-brand img
+{
+    width: 10rem;
+}
+.navbar a
+{
+    padding: 1rem 0.5rem;
+    margin: auto;
+}
+.navbar .container
+{
+    max-width: -webkit-fill-available;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
